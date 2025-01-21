@@ -220,7 +220,7 @@ def extract_user_gql(data):
 
 def extract_user_v1(data):
     """For Private API"""
-    data["broadcast_channel"] = extract_broadcast_channel(data)
+    #data["broadcast_channel"] = extract_broadcast_channel(data)
     data["external_url"] = data.get("external_url") or None
     versions = data.get("hd_profile_pic_versions")
     pic_hd = versions[-1] if versions else data.get("hd_profile_pic_url_info", {})
