@@ -854,7 +854,7 @@ class MediaMixin:
             medias = medias[:amount]
         return ([extract_media_v1(media["media"]) for media in medias], next_max_id)
 
-    def user_clips_v1(self, user_id: str, amount: int = 0) -> List[Media]:
+    def user_clips_v1(self, user_id: str, amount: int = 0, is_running = None) -> List[Media]:
         """
         Get a user's clip (reels) by Private Mobile API
 
@@ -873,7 +873,7 @@ class MediaMixin:
         user_id = int(user_id)
         medias = []
         next_max_id = ""
-        while True:
+        while is_running:
             try:
                 medias_page, next_max_id = self.user_clips_paginated_v1(
                     user_id, end_cursor=next_max_id
